@@ -1,26 +1,47 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template> 
+  <HeaderTop />
+  <FilterBar />
+  <div class="property-container">
+    <LocationMap />
+    <PropertyList />
+  </div>
+  
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderTop from './components/HeaderTop.vue'
+import FilterBar from './components/FilterBar.vue'
+import LocationMap from './components/LocationMap.vue'
+import PropertyList from './components/PropertyList.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderTop,
+    FilterBar,
+    LocationMap,
+    PropertyList
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.property-container {
+  display: flex;
 }
 </style>

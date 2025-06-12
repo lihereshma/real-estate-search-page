@@ -4,7 +4,9 @@
       <div class="menu-icon"><img src="../assets/hamburger-icon.png" alt="Menu" /></div>
 
       <div class="logo">
-        <img src="../assets/site-logo.png" alt="Logo" />
+        <a href="/" title="Houzeo">
+          <img src="../assets/site-logo.png" alt="Logo" />
+        </a>  
       </div>
 
       <div class="user-icon">
@@ -17,10 +19,10 @@
         <input
           v-model="searchLocation"
           type="text"
-          placeholder="Austin, TX"
+          placeholder="Search by city, state or zip"
           class="search-input"
         />
-        <span class="clear-icon"><img src="../assets/close-icon.png" alt="Close" /></span>
+        <!-- <span class="clear-icon"><img src="../assets/close-icon.png" alt="Close" /></span> -->
         <span class="search-icon"><img src="../assets/search-icon.png" alt="Search" /></span>
       </div>
     </div>
@@ -31,7 +33,7 @@
     </div>
 
     <div class="btns-wrapper">
-      <button class="sign-in-btn">Sign In</button>
+      <a href="#" class="sign-in-btn">Sign In</a>
       <button class="free-listing-btn">Start Free Listing</button>
     </div>
   </header>
@@ -51,7 +53,8 @@ export default {
   justify-content: space-between;
   background: white;
   padding: 0.75rem 2rem;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  /* box-shadow: 0 2px 5px rgb(0 0 0 / 0.1); */
+  border-bottom: 1px solid #00000033;
   user-select: none;
 }
 
@@ -62,11 +65,7 @@ export default {
 }
 
 .search-wrapper {
-  max-width: 500px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 10px 16px;
+  flex: 0 0 30%;
 }
 
 .search-filters-center {
@@ -79,26 +78,44 @@ export default {
 
 .search-input {
   width: 100%;
+  padding: 10px 16px;
+  border: 2px solid #00000033;
+  border-radius: 50px;
+  background-color: #F3F7FA;
   font-size: 14px;
   font-weight: 500;
   transition: border-color 0.3s ease;
   flex: 1;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
 .search-input:focus {
   border-color: #0E5293;
   outline: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btns-wrapper {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
+}
+
+.btns-wrapper a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 14px;
+  transition: all .5s ease;
+}
+
+.btns-wrapper a:hover {
+  color: #0E5293;
 }
 
 .btns-wrapper button {
   border: none;
-  background: linear-gradient(to left, #0E5293, #2876C1);
+  background-color: #0E5293;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -110,7 +127,7 @@ export default {
 }
 
 .btns-wrapper button:hover {
-  background: linear-gradient(to right, #0E5293 20%, #2876C1 80%);
+  background-color: #2876C1;
   color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
@@ -130,64 +147,82 @@ export default {
 
 .search-box {
   flex: 1;
+  position: relative;
+}
+
+
+.search-icon {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  border: 2px solid #00000033;
-  border-radius: 20px;
-  background-color: #F3F7FA;
-  padding: 6px 12px;
-  position: relative;
-}
-
-.search-box input {
-
-}
-
-.search-icon,
-.clear-icon {
-  font-size: 16px;
-  margin-left: 8px;
-  color: #0e5293;
   cursor: pointer;
 }
 
-.filter-icon {
-  position: relative;
-  width: 36px;
-  height: 36px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+.search-icon img {
+  transition: all .5s ease;
 }
 
+.search-icon:hover img {
+  transform: scale(1.05);
+}
+
+/* 
 .filter-icon img {
   width: 20px;
   height: 20px;
-}
+} */
 
 
 /* Responsive */
 @media (max-width: 768px) {
   .mobile-top-bar .menu-icon,
-  .mobile-top-bar .user-icon,
+  .mobile-top-bar .user-icon {
+    display: flex;
+    align-items: center;
+  }
+
   .filter-icon {
-    display: block;
+    width: 10%;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .btns-wrapper {
+    display: none;
   }
 
   .header-bar {
     flex-wrap: wrap;
-    padding: 0.5rem 1rem;
+    padding: 0;
+  }
+
+  .search-wrapper {
+    flex: 0 78%;
+    margin: 1rem 0 1rem 1rem;
   }
   .search-filters-center {
     order: 3;
     width: 100%;
     margin: 0.5rem 0;
   }
-  .btns-wrapper {
-    order: 2;
+
+  .mobile-top-bar {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #00000033;
   }
+
   .logo {
     order: 1;
+  }
+
+  .user-icon {
+    order: 2;
   }
 }
 </style>

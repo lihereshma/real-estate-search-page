@@ -1,29 +1,53 @@
 <template>
   <div class="property-list">
-    <PropertyCard
-      v-for="property in properties"
-      :key="property.id"
-      :property="property"
-      @toggleFavorite="toggleFavorite"
+    <PropertyCard 
+      v-for="(property, index) in properties" 
+      :key="index" 
+      v-bind="property" 
     />
+
   </div>
 </template>
 
-<script>
-export default {
-  name: 'PropertyList'
-}
+<script setup>
+import PropertyCard from './PropertyCard.vue';
+
+const properties = [
+  {
+    image: require('@/assets/1.png'),
+    daysOnHouzeo: 6,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  {
+    image: require('@/assets/2.png'),
+    daysOnHouzeo: 10,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  // You can add more properties here
+];
 </script>
+
 
 <style scoped>
 .property-list {
   width: 60%;
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  overflow-y: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
   max-height: 100%;
-  padding-right: 1rem;
 }
 
 /* Mobile stack - full width property card */

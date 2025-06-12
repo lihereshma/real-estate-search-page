@@ -1,20 +1,35 @@
 <template>
   <div class="property-card">
     <!-- Image & Badge -->
-    <div class="image-container">
-      <img :src="image" alt="Property" class="property-image" />
+    <div
+      class="image-container"
+      @mouseenter="showNav = true"
+      @mouseleave="showNav = false"
+    >
+      <img v-if="images && images.length" :src="images[currentImage]" alt="Property" class="property-image" />
+
+
       <span v-if="daysOnHouzeo" class="badge">
         {{ daysOnHouzeo }} days on Houzeo
       </span>
 
       <button class="like-button">
-        <svg xmlns="http://www.w3.org/2000/svg" class="heart-icon" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
-        </svg>
+        <img src="@/assets/heart.svg" alt="Like" class="heart-icon" />
       </button>
-      <div class="dot-indicators">
+      <div class="dot-indicators" v-if="showNav">
         <span v-for="n in 3" :key="n" class="dot"></span>
       </div>
+
+      <button
+        v-if="showNav"
+        class="nav-arrow left"
+        @click="prevImage"
+      >&#10094;</button>
+      <button
+        v-if="showNav"
+        class="nav-arrow right"
+        @click="nextImage"
+      >&#10095;</button>
       <img src="@/assets/triangle-mls-logo.png" alt="MLS Logo" class="mls-logo" />
     </div>
 
@@ -27,10 +42,7 @@
           <span>House For Sale</span>
         </div>
         <div class="views">
-          <svg xmlns="http://www.w3.org/2000/svg" class="bell-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-5-5.917V4a2 2 0 10-4 0v1.083A6.002 6.002 0 004 11v3.159c0 .538-.214 1.055-.595 1.436L2 17h5m7 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-          </svg>
+          <img src="../assets/views-icon.png" alt="Views" class="views-icon" />
           <span>{{ views }}K</span>
         </div>
       </div>
@@ -41,9 +53,9 @@
 
       <!-- Specs -->
       <div class="specs">
-        <span class="bold">{{ beds }}</span> Bds &nbsp;•&nbsp;
-        <span class="bold">{{ baths }}</span> Ba &nbsp;•&nbsp;
-        <span class="bold">{{ sqft }}</span> sqft &nbsp;•&nbsp;
+        <span class="bold">{{ beds }}</span> Beds &nbsp;•&nbsp;
+        <span class="bold">{{ baths }}</span> Baths &nbsp;•&nbsp;
+        <span class="bold">{{ sqft }}</span> sqft
       </div>
       </div>
 
@@ -57,8 +69,13 @@
 
 <script setup>
 /* eslint-disable no-undef */
-defineProps({
-  image: String,
+import { ref } from 'vue';
+
+const props = defineProps({
+  images: {
+    type: Array,
+    required: true,
+  },
   daysOnHouzeo: Number,
   price: String,
   beds: Number,
@@ -68,6 +85,18 @@ defineProps({
   mlsDetails: String,
   views: Number,
 });
+
+const currentImage = ref(0);
+const showNav = ref(false);
+
+const nextImage = () => {
+  currentImage.value = (currentImage.value + 1) % props.images.length;
+};
+
+const prevImage = () => {
+  currentImage.value =
+    (currentImage.value - 1 + props.images.length) % props.images.length;
+};
 </script>
 
 <style scoped>
@@ -78,7 +107,12 @@ defineProps({
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.property-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .image-container {
@@ -107,44 +141,89 @@ defineProps({
 
 .like-button {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: white;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
   border: none;
-  padding: 6px;
   border-radius: 9999px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  padding: 0;
   cursor: pointer;
 }
 
 .heart-icon {
-  width: 20px;
-  height: 20px;
-  color: #e53e3e;
+  width: 24px;
+  height: 24px;
+}
+
+.like-button:hover .heart-icon {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 253, 253, 0.5);
+  color: #000;
+  border: none;
+  font-size: 16px;
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+.nav-arrow:hover {
+  background: #fff;
+}
+
+.nav-arrow.left {
+  left: 10px;
+}
+
+.nav-arrow.right {
+  right: 10px;
 }
 
 .dot-indicators {
   position: absolute;
-  bottom: 8px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 4px;
+  gap: 6px;
+  transition: all .5s ease;
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
-  background-color: rgba(255, 255, 255, 0.7);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #fff;
 }
 
 .mls-logo {
   position: absolute;
   bottom: 8px;
   right: 8px;
-  width: 80px;
-  object-fit: contain;
 }
 
 .content {
@@ -154,6 +233,7 @@ defineProps({
 .info-bar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 13px;
   color: #666;
   margin-bottom: 8px;
@@ -163,11 +243,14 @@ defineProps({
   display: flex;
   align-items: center;
   gap: 6px;
+  border: 1px solid #0000001A;
+  border-radius: 50px;
+  padding: 2px 8px;
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background-color: #22c55e;
   border-radius: 50%;
 }
@@ -176,49 +259,57 @@ defineProps({
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
+  color: #000000;
+  opacity: .7;
+  transition: all .5s ease;
 }
 
-.bell-icon {
-  width: 16px;
-  height: 16px;
-  stroke: #555;
+.views:hover {
+  opacity: 1;
 }
 
 .price {
-  font-size: 20px;
-  font-weight: bold;
-  color: #1d4ed8;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0B5AA5;
   margin: 0;
 }
 
 .specs {
-  font-size: 13px;
-  color: #444;
+  font-size: 12px;
+  color: #00000080;
 }
 
 .bold {
+  font-size: 14px;
   font-weight: 600;
-}
-
-.sale-status {
-  color: #d97706;
-  font-weight: 600;
+  color: #0B5AA5;
 }
 
 .address {
-  font-size: 13px;
-  color: #333;
+  font-size: 12px;
+  color: #000000B2;
   margin-bottom: 4px;
+  text-align: left;
 }
 
 .mls-details {
-  font-size: 11px;
-  color: #999;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #00000080;
+  text-align: left;
 }
 
 @media (max-width: 640px) {
   .property-card {
     flex: 0 0 100%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .property-card {
+    flex: 0 0 calc(33% - 12px);
   }
 }
 </style>

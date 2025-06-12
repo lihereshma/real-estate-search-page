@@ -14,7 +14,11 @@ import PropertyCard from './PropertyCard.vue';
 
 const properties = [
   {
-    image: require('@/assets/1.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     daysOnHouzeo: 6,
     price: "$3,349,000",
     beds: 4,
@@ -25,7 +29,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/2.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     daysOnHouzeo: 12,
     price: "$3,349,000",
     beds: 4,
@@ -36,7 +44,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/3.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     // daysOnHouzeo: 6,
     price: "$3,349,000",
     beds: 4,
@@ -47,7 +59,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/4.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     daysOnHouzeo: 10,
     price: "$3,349,000",
     beds: 4,
@@ -58,7 +74,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/1.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     daysOnHouzeo: 6,
     price: "$3,349,000",
     beds: 4,
@@ -69,7 +89,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/2.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     // daysOnHouzeo: 10,
     price: "$3,349,000",
     beds: 4,
@@ -80,7 +104,11 @@ const properties = [
     views: 2.3,
   },
   {
-    image: require('@/assets/3.png'),
+    images: [
+      require('@/assets/1.png'),
+      require('@/assets/2.png'),
+      require('@/assets/3.png'),
+    ],
     daysOnHouzeo: 12,
     price: "$3,349,000",
     beds: 4,
@@ -105,6 +133,7 @@ const properties = [
   gap: 20px;
   justify-content: space-between;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 @media (max-width: 768px) {

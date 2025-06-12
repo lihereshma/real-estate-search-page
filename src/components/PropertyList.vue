@@ -26,6 +26,28 @@ const properties = [
   },
   {
     image: require('@/assets/2.png'),
+    daysOnHouzeo: 12,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  {
+    image: require('@/assets/3.png'),
+    // daysOnHouzeo: 6,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  {
+    image: require('@/assets/4.png'),
     daysOnHouzeo: 10,
     price: "$3,349,000",
     beds: 4,
@@ -35,7 +57,39 @@ const properties = [
     mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
     views: 2.3,
   },
-  // You can add more properties here
+  {
+    image: require('@/assets/1.png'),
+    daysOnHouzeo: 6,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  {
+    image: require('@/assets/2.png'),
+    // daysOnHouzeo: 10,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
+  {
+    image: require('@/assets/3.png'),
+    daysOnHouzeo: 12,
+    price: "$3,349,000",
+    beds: 4,
+    baths: 3,
+    sqft: 998,
+    address: "2856 Meadow Park Ave, Henderson, NV 89052",
+    mlsDetails: "Nashville (Real Tracs Mid) MLS-TN as distributed by MLS GRID",
+    views: 2.3,
+  },
 ];
 </script>
 
@@ -43,18 +97,21 @@ const properties = [
 <style scoped>
 .property-list {
   width: 60%;
-  padding: 1rem;
+  height: 80vh;
+  overflow-y: auto;
+  padding-inline: 1rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
-  max-height: 100%;
+  box-sizing: border-box;
 }
 
-/* Mobile stack - full width property card */
 @media (max-width: 768px) {
   .property-list {
-    padding-right: 0;
+    width: 100%;
     max-height: none;
+    overflow: visible;
   }
 }
 </style>

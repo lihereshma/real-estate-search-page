@@ -43,5 +43,7 @@ body {
 
 .property-container {
   display: flex;
+  height: 80vh; /* Full screen height */
 }
+
 </style>

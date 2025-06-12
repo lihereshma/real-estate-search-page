@@ -12,14 +12,16 @@ export default {
 
 <style>
 .map-container {
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  /* box-shadow: 0 4px 15px rgb(0 0 0 / 0.15); */
+  width: 50%; /* Fixed width for map */
+  height: 80vh;
+  overflow: hidden; /* Prevent scroll in map section */
+  position: sticky; /* Optional if you want it to scroll with page */
+  top: 0;
 }
 
 .map-container iframe {
   width: 100%;
+  height: 100%;
 }
 
 /* Mobile style - map collapsed behind or smaller */

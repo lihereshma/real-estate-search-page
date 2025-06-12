@@ -3,7 +3,10 @@
     <!-- Image & Badge -->
     <div class="image-container">
       <img :src="image" alt="Property" class="property-image" />
-      <span class="badge">{{ daysOnHouzeo }} days on Houzeo</span>
+      <span v-if="daysOnHouzeo" class="badge">
+        {{ daysOnHouzeo }} days on Houzeo
+      </span>
+
       <button class="like-button">
         <svg xmlns="http://www.w3.org/2000/svg" class="heart-icon" viewBox="0 0 20 20" fill="currentColor">
           <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
@@ -33,6 +36,7 @@
       </div>
 
       <!-- Price -->
+      <div class="info-bar">
       <h3 class="price">{{ price }}</h3>
 
       <!-- Specs -->
@@ -40,8 +44,9 @@
         <span class="bold">{{ beds }}</span> Bds &nbsp;•&nbsp;
         <span class="bold">{{ baths }}</span> Ba &nbsp;•&nbsp;
         <span class="bold">{{ sqft }}</span> sqft &nbsp;•&nbsp;
-        <span class="sale-status">Sale Pending</span>
       </div>
+      </div>
+
 
       <!-- Address and MLS -->
       <p class="address">{{ address }}</p>
@@ -67,10 +72,9 @@ defineProps({
 
 <style scoped>
 .property-card {
-  width: 100%;
-  max-width: 360px;
+  flex: 0 0 calc(50% - 12px);
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 16px;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
   background-color: #fff;
@@ -83,18 +87,19 @@ defineProps({
 
 .property-image {
   width: 100%;
-  height: 210px;
+  height: 220px;
   object-fit: cover;
   display: block;
 }
 
 .badge {
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 16px;
+  left: 16px;
   background-color: #ffffff;
-  color: #333;
-  font-size: 12px;
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
   padding: 4px 8px;
   border-radius: 9999px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -183,13 +188,12 @@ defineProps({
   font-size: 20px;
   font-weight: bold;
   color: #1d4ed8;
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 .specs {
   font-size: 13px;
   color: #444;
-  margin-bottom: 8px;
 }
 
 .bold {
@@ -210,5 +214,11 @@ defineProps({
 .mls-details {
   font-size: 11px;
   color: #999;
+}
+
+@media (max-width: 640px) {
+  .property-card {
+    flex: 0 0 100%;
+  }
 }
 </style>

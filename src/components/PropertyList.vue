@@ -41,9 +41,9 @@
     },
     {
       images: [
+        require('@/assets/4.png'),
         require('@/assets/1.png'),
         require('@/assets/2.png'),
-        require('@/assets/3.png'),
       ],
       daysOnHouzeo: 12,
       price: "$3,349,000",
@@ -56,9 +56,9 @@
     },
     {
       images: [
-        require('@/assets/1.png'),
-        require('@/assets/2.png'),
         require('@/assets/3.png'),
+        require('@/assets/4.png'),
+        require('@/assets/1.png'),
       ],
       // daysOnHouzeo: 6,
       price: "$3,349,000",
@@ -71,9 +71,9 @@
     },
     {
       images: [
-        require('@/assets/1.png'),
         require('@/assets/2.png'),
         require('@/assets/3.png'),
+        require('@/assets/4.png'),
       ],
       daysOnHouzeo: 10,
       price: "$3,349,000",
@@ -101,9 +101,9 @@
     },
     {
       images: [
+        require('@/assets/4.png'),
         require('@/assets/1.png'),
         require('@/assets/2.png'),
-        require('@/assets/3.png'),
       ],
       // daysOnHouzeo: 10,
       price: "$3,349,000",
@@ -116,9 +116,9 @@
     },
     {
       images: [
-        require('@/assets/1.png'),
-        require('@/assets/2.png'),
         require('@/assets/3.png'),
+        require('@/assets/4.png'),
+        require('@/assets/1.png'),
       ],
       daysOnHouzeo: 12,
       price: "$3,349,000",
@@ -146,6 +146,7 @@
     height: 80vh;
     overflow-y: auto;
     padding: 1rem;
+    padding-top: 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

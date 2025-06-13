@@ -1,16 +1,16 @@
 <template>
   <header class="header-bar">
     <div class="mobile-top-bar">
-      <div class="menu-icon"><img src="@/assets/hamburger-icon.png" alt="Menu" /></div>
+      <div class="menu-icon"><img src="@/assets/hamburger-icon.png" alt="Menu" loading="lazy" /></div>
 
       <div class="logo">
         <a href="/" title="Houzeo">
-          <img src="@/assets/site-logo.png" alt="Logo" />
+          <img src="@/assets/site-logo.png" alt="Logo" loading="lazy" />
         </a>  
       </div>
 
       <div class="user-icon">
-        <img src="@/assets/user-icon.png" alt="My Account" />
+        <img src="@/assets/user-icon.png" alt="My Account" loading="lazy" />
       </div>
     </div>
 
@@ -29,14 +29,23 @@
 
 <style>
   .header-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     background: white;
     padding: 0.75rem 2rem;
-    box-shadow: 0 2px 5px rgb(0 0 0 / 0.07);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
     border-bottom: 1px solid #00000033;
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
   .mobile-top-bar .menu-icon,
@@ -45,7 +54,11 @@
   }
 
   .btns-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 0.75rem;
   }
@@ -54,7 +67,8 @@
     text-decoration: none;
     color: #000000;
     font-size: 14px;
-    transition: all .5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .btns-wrapper a:hover {
@@ -71,6 +85,7 @@
     padding: 8px 16px;
     border-radius: 12px;
     cursor: pointer;
+    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
 
@@ -81,8 +96,14 @@
   }
 
   .mobile-top-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 
@@ -96,7 +117,11 @@
   @media (max-width: 768px) {
     .mobile-top-bar .menu-icon,
     .mobile-top-bar .user-icon {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
     }
 
@@ -105,6 +130,7 @@
     }
 
     .header-bar {
+      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
       padding: 0;
     }

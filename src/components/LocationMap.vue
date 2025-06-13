@@ -15,13 +15,17 @@
     width: 50%;
     height: 80vh;
     overflow: hidden;
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
+    box-sizing: border-box;
   }
 
   .map-container iframe {
     width: 100%;
     height: 100%;
+    border: 0;
+    display: block;
   }
 
   @media (max-width: 768px) {
@@ -32,4 +36,5 @@
       display: none;
     }
   }
+
 </style>

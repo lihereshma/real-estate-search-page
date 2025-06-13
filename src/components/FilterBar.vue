@@ -7,13 +7,13 @@
           placeholder="Search by city, state or zip"
           class="search-input"
         />
-        <!-- <span class="clear-icon"><img src="@/assets/close-icon.png" alt="Close" /></span> -->
-        <span class="search-icon"><img src="@/assets/search-icon.png" alt="Search" /></span>
+        <!-- <span class="clear-icon"><img src="@/assets/close-icon.png" alt="Close" loading="lazy"/></span> -->
+        <span class="search-icon"><img src="@/assets/search-icon.png" alt="Search" loading="lazy" /></span>
       </div>
     </div>
 
     <div class="filter-icon" @click="toggleFilters">
-      <img src="@/assets/filter-icon.png" alt="Filter" />
+      <img src="@/assets/filter-icon.png" alt="Filter" loading="lazy" />
     </div>
 
     <div class="filters" :class="{ show: showFilters }">
@@ -46,11 +46,11 @@
       </select>
 
       <button class="additional-filters-btn" @click="showModal = true">
-        <img src="@/assets/filters-icon.png" alt="Filters" />Filters
+        <img src="@/assets/filters-icon.png" alt="Filters" loading="lazy" />Filters
       </button>
 
       <button class="save-btn">
-        <img src="@/assets/edit-icon.png" alt="SAve Search" />Save Search
+        <img src="@/assets/edit-icon.png" alt="SAve Search" loading="lazy" />Save Search
       </button>
     </div>
 
@@ -90,7 +90,11 @@
     flex: 1;
     max-width: 600px;
     margin: 0 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
   }
 
@@ -102,7 +106,10 @@
     background-color: #F3F7FA;
     font-size: 14px;
     font-weight: 500;
+    -webkit-transition: border-color 0.3s ease;
     transition: border-color 0.3s ease;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
@@ -111,10 +118,13 @@
   .search-input:focus {
     border-color: #0E5293;
     outline: 0;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
   .search-box {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     position: relative;
   }
@@ -123,37 +133,60 @@
     position: absolute;
     right: 7px;
     top: 50%;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     cursor: pointer;
   }
 
   .search-icon img {
-    transition: all .5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
   }
 
   .search-icon:hover img {
+    -webkit-transform: scale(1.05);
     transform: scale(1.05);
   }
 
   .filter-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
     justify-content: flex-start;
     gap: 1rem;
     background: #fff;
     padding: 0.75rem 2rem;
+    -webkit-box-shadow: 0 2px 5px rgb(0 0 0 / 0.07);
     box-shadow: 0 2px 5px rgb(0 0 0 / 0.07);
     user-select: none;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   .filters {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 70%;
     flex: 0 0 70%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     gap: 1rem;
   }
 
@@ -162,16 +195,18 @@
     border: 1px solid #00000033;
     border-radius: 8px;
     font-size: 14px;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     min-width: 150px;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    -moz-appearance: none;  
+    -moz-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg fill='black' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
+    font-family: 'Poppins', sans-serif;
   }
 
   .filter-select:focus {
@@ -181,7 +216,11 @@
   }
 
   .save-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     gap: 1em;
     padding: 10px 16px;
@@ -191,12 +230,14 @@
     color: #000;
     font-weight: 500;
     cursor: pointer;
+    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     white-space: nowrap;
   }
 
   .save-btn:hover {
     border-color: #000;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
@@ -205,14 +246,20 @@
     border: 1px solid #00000033;
     border-radius: 8px;
     font-size: 14px;
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     background-color: transparent;
     color: #000;
     cursor: pointer;
-    transition: all 0.3s ease;
     white-space: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     gap: 15px;
   }
@@ -229,20 +276,27 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(0 0 0 / 0.3);
+    background: rgba(0, 0, 0, 0.3);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     z-index: 999;
   }
 
   .modal-content {
-    background: white;
+    background: #fff;
     padding: 2rem;
     border-radius: 12px;
     max-width: 400px;
     width: 100%;
-    box-shadow: 0 8px 20px rgb(0 0 0 / 0.25);
+    -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     text-align: center;
   }
 
@@ -256,24 +310,31 @@
     padding: 8px 30px;
     border-radius: 12px;
     cursor: pointer;
+    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
   }
 
   .modal-close-btn:hover {
     background-color: #2876C1;
     color: #fff;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
     .filters {
+      -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
       flex: 0 0 100%;
       gap: 10px;
       max-height: 0;
       overflow: hidden;
       opacity: 0;
+      -webkit-transform: translateY(-10px);
       transform: translateY(-10px);
+      -webkit-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
     }
 
@@ -281,6 +342,7 @@
       max-height: 500px;
       padding-bottom: 1rem;
       opacity: 1;
+      -webkit-transform: translateY(0);
       transform: translateY(0);
     }
 
@@ -288,13 +350,21 @@
       padding: 1rem;
       border-radius: 0 0 20px 20px;
       padding-bottom: 0;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
       justify-content: space-between;
     }
 
     .filter-icon {
       width: 10%;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
       justify-content: flex-end;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
       align-items: center;
     }
 
@@ -304,17 +374,20 @@
     }
 
     .search-wrapper {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 85%;
       flex: 0 85%;
     }
-    
+
     .search-filters-center {
       order: 3;
       width: 100%;
       margin: 0.5rem 0;
     }
-    
+
     .additional-filters-btn,
     .save-btn {
+      -ms-flex: none;
       flex: none;
       font-size: 12px;
     }
@@ -324,3 +397,4 @@
     }
   }
 </style>
+

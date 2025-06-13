@@ -1,14 +1,14 @@
 <template>
   <div class="property-card">
     <div class="image-container" @mouseenter="showNav = true" @mouseleave="showNav = false">
-      <img v-if="images && images.length" :src="images[currentImage]" alt="Property" class="property-image" />
+      <img v-if="images && images.length" :src="images[currentImage]" alt="Property" class="property-image" loading="lazy" />
 
       <span v-if="daysOnHouzeo" class="badge">
         {{ daysOnHouzeo }} days on Houzeo
       </span>
 
       <button class="like-button">
-        <img src="@/assets/heart.svg" alt="Like" class="heart-icon" />
+        <img src="@/assets/heart.svg" alt="Like" class="heart-icon" loading="lazy" />
       </button>
 
       <div class="dot-indicators" v-if="showNav">
@@ -25,7 +25,7 @@
         class="nav-arrow right"
         @click="nextImage">&#10095;</button>
 
-      <img src="@/assets/triangle-mls-logo.png" alt="MLS Logo" class="mls-logo" />
+      <img src="@/assets/triangle-mls-logo.png" alt="MLS Logo" class="mls-logo" loading="lazy" />
     </div>
 
     <div class="content">
@@ -36,7 +36,7 @@
         </div>
 
         <div class="views">
-          <img src="../assets/views-icon.png" alt="Views" class="views-icon" />
+          <img src="../assets/views-icon.png" alt="Views" class="views-icon" loading="lazy" />
           <span>{{ views }}K</span>
         </div>
       </div>
@@ -88,217 +88,248 @@
   };
 </script>
 
-<style scoped>
-.property-card {
-  flex: 0 0 calc(50% - 12px);
-  border: 1px solid #ddd;
-  border-radius: 16px;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all .5s ease;
-}
-
-.property-card:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.image-container {
-  position: relative;
-}
-
-.property-image {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.badge {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  background-color: #ffffff;
-  color: #000;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 9999px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-}
-
-.like-button {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background-color: transparent;
-  border: none;
-  border-radius: 9999px;
-  padding: 0;
-  cursor: pointer;
-}
-
-.heart-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.like-button:hover .heart-icon {
-  animation: pulse 0.6s ease-in-out;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 253, 253, 0.5);
-  color: #000;
-  border: none;
-  font-size: 16px;
-  padding: 2px 8px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 2;
-  transition: all 0.5s ease;
-}
-
-.nav-arrow:hover {
-  background: #fff;
-}
-
-.nav-arrow.left {
-  left: 10px;
-}
-
-.nav-arrow.right {
-  right: 10px;
-}
-
-.dot-indicators {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 6px;
-  transition: all .5s ease;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.dot.active {
-  background-color: #fff;
-}
-
-.mls-logo {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-}
-
-.content {
-  padding: 16px;
-}
-
-.info-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid #0000001A;
-  border-radius: 50px;
-  padding: 2px 8px;
-}
-
-.status-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #22c55e;
-  border-radius: 50%;
-}
-
-.views {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  color: #000000;
-  opacity: .7;
-  transition: all .5s ease;
-}
-
-.views:hover {
-  opacity: 1;
-}
-
-.price {
-  font-size: 16px;
-  font-weight: 600;
-  color: #0B5AA5;
-  margin: 0;
-}
-
-.specs {
-  font-size: 12px;
-  color: #00000080;
-}
-
-.bold {
-  font-size: 14px;
-  font-weight: 600;
-  color: #0B5AA5;
-}
-
-.address {
-  font-size: 12px;
-  color: #000000B2;
-  margin-bottom: 4px;
-  text-align: left;
-}
-
-.mls-details {
-  margin-bottom: 0;
-  font-size: 12px;
-  color: #00000080;
-  text-align: left;
-}
-
-@media (max-width: 640px) {
+<style>
   .property-card {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(50% - 12px);
+    flex: 0 0 calc(50% - 12px);
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
   }
-}
 
-@media (min-width: 1920px) {
-  .property-card {
-    flex: 0 0 calc(33% - 12px);
+  .property-card:hover {
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
-}
+
+  .image-container {
+    position: relative;
+  }
+
+  .property-image {
+    width: 100%;
+    height: 220px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    display: block;
+  }
+
+  .badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: #ffffff;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .like-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 9999px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .heart-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .like-button:hover .heart-icon {
+    -webkit-animation: pulse 0.6s ease-in-out;
+    animation: pulse 0.6s ease-in-out;
+  }
+
+  @-webkit-keyframes pulse {
+    0% { -webkit-transform: scale(1); transform: scale(1); }
+    50% { -webkit-transform: scale(1.2); transform: scale(1.2); }
+    100% { -webkit-transform: scale(1); transform: scale(1); }
+  }
+
+  @keyframes pulse {
+    0% { -webkit-transform: scale(1); transform: scale(1); }
+    50% { -webkit-transform: scale(1.2); transform: scale(1.2); }
+    100% { -webkit-transform: scale(1); transform: scale(1); }
+  }
+
+  .nav-arrow {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background: rgba(255, 253, 253, 0.5);
+    color: #000;
+    border: none;
+    font-size: 16px;
+    padding: 2px 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  .nav-arrow:hover {
+    background: #fff;
+  }
+
+  .nav-arrow.left { left: 10px; }
+  .nav-arrow.right { right: 10px; }
+
+  .dot-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 6px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    -webkit-transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease;
+  }
+
+  .dot.active {
+    background-color: #fff;
+  }
+
+  .mls-logo {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .info-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .status {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #0000001A;
+    border-radius: 50px;
+    padding: 2px 8px;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #22c55e;
+    border-radius: 50%;
+  }
+
+  .views {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: #000000;
+    opacity: .7;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+  }
+
+  .views:hover {
+    opacity: 1;
+  }
+
+  .price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0B5AA5;
+    margin: 0;
+  }
+
+  .specs {
+    font-size: 12px;
+    color: #00000080;
+  }
+
+  .bold {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0B5AA5;
+  }
+
+  .address {
+    font-size: 12px;
+    color: #000000B2;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+
+  .mls-details {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: #00000080;
+    text-align: left;
+  }
+
+  @media (max-width: 640px) {
+    .property-card {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .property-card {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 calc(33% - 12px);
+      flex: 0 0 calc(33% - 12px);
+    }
+  }
+
 </style>

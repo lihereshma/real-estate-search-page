@@ -1,4 +1,7 @@
-# real-estate-search-page
+# Real Estate Search Page
+
+A Vue.js-based real estate property listing and filtering interface.
+
 
 ## Project setup
 ```
@@ -18,6 +21,22 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Project Structure
+
+```
+src/
+  components/
+    FilterBar.vue
+    HeaderTop.vue
+    LocationMap.vue
+    PropertyCard.vue
+    PropertyList.vue
+  App.vue
+  main.js
+public/
+  index.html
 ```
 
 ### Customize configuration

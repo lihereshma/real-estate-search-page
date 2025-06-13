@@ -27,6 +27,7 @@ npm run lint
 
 ```
 src/
+  assets
   components/
     FilterBar.vue
     HeaderTop.vue

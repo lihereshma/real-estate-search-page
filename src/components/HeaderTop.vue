@@ -38,7 +38,7 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    background: white;
+    background: #fff;
     padding: 0.75rem 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
     border-bottom: 1px solid #00000033;

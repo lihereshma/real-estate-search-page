@@ -127,7 +127,7 @@ const properties = [
   width: 60%;
   height: 80vh;
   overflow-y: auto;
-  padding-inline: 1rem;
+  padding: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

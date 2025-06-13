@@ -1,13 +1,7 @@
 <template>
   <div class="property-card">
-    <!-- Image & Badge -->
-    <div
-      class="image-container"
-      @mouseenter="showNav = true"
-      @mouseleave="showNav = false"
-    >
+    <div class="image-container" @mouseenter="showNav = true" @mouseleave="showNav = false">
       <img v-if="images && images.length" :src="images[currentImage]" alt="Property" class="property-image" />
-
 
       <span v-if="daysOnHouzeo" class="badge">
         {{ daysOnHouzeo }} days on Houzeo
@@ -16,6 +10,7 @@
       <button class="like-button">
         <img src="@/assets/heart.svg" alt="Like" class="heart-icon" />
       </button>
+
       <div class="dot-indicators" v-if="showNav">
         <span v-for="n in 3" :key="n" class="dot"></span>
       </div>
@@ -23,44 +18,39 @@
       <button
         v-if="showNav"
         class="nav-arrow left"
-        @click="prevImage"
-      >&#10094;</button>
+        @click="prevImage">&#10094;</button>
+
       <button
         v-if="showNav"
         class="nav-arrow right"
-        @click="nextImage"
-      >&#10095;</button>
+        @click="nextImage">&#10095;</button>
+
       <img src="@/assets/triangle-mls-logo.png" alt="MLS Logo" class="mls-logo" />
     </div>
 
-    <!-- Content -->
     <div class="content">
-      <!-- Top Info -->
       <div class="info-bar">
         <div class="status">
           <span class="status-dot"></span>
           <span>House For Sale</span>
         </div>
+
         <div class="views">
           <img src="../assets/views-icon.png" alt="Views" class="views-icon" />
           <span>{{ views }}K</span>
         </div>
       </div>
 
-      <!-- Price -->
       <div class="info-bar">
-      <h3 class="price">{{ price }}</h3>
+        <h3 class="price">{{ price }}</h3>
 
-      <!-- Specs -->
-      <div class="specs">
-        <span class="bold">{{ beds }}</span> Beds &nbsp;•&nbsp;
-        <span class="bold">{{ baths }}</span> Baths &nbsp;•&nbsp;
-        <span class="bold">{{ sqft }}</span> sqft
+        <div class="specs">
+          <span class="bold">{{ beds }}</span> Beds &nbsp;•&nbsp;
+          <span class="bold">{{ baths }}</span> Baths &nbsp;•&nbsp;
+          <span class="bold">{{ sqft }}</span> sqft
+        </div>
       </div>
-      </div>
 
-
-      <!-- Address and MLS -->
       <p class="address">{{ address }}</p>
       <p class="mls-details">{{ mlsDetails }}</p>
     </div>
@@ -68,35 +58,34 @@
 </template>
 
 <script setup>
-/* eslint-disable no-undef */
-import { ref } from 'vue';
+  /* eslint-disable no-undef */
+  import { ref } from 'vue';
 
-const props = defineProps({
-  images: {
-    type: Array,
-    required: true,
-  },
-  daysOnHouzeo: Number,
-  price: String,
-  beds: Number,
-  baths: Number,
-  sqft: Number,
-  address: String,
-  mlsDetails: String,
-  views: Number,
-});
+  const props = defineProps({
+    images: {
+      type: Array,
+      required: true,
+    },
+    daysOnHouzeo: Number,
+    price: String,
+    beds: Number,
+    baths: Number,
+    sqft: Number,
+    address: String,
+    mlsDetails: String,
+    views: Number,
+  });
 
-const currentImage = ref(0);
-const showNav = ref(false);
+  const currentImage = ref(0);
+  const showNav = ref(false);
 
-const nextImage = () => {
-  currentImage.value = (currentImage.value + 1) % props.images.length;
-};
+  const nextImage = () => {
+    currentImage.value = (currentImage.value + 1) % props.images.length;
+  };
 
-const prevImage = () => {
-  currentImage.value =
-    (currentImage.value - 1 + props.images.length) % props.images.length;
-};
+  const prevImage = () => {
+    currentImage.value = (currentImage.value - 1 + props.images.length) % props.images.length;
+  };
 </script>
 
 <style scoped>

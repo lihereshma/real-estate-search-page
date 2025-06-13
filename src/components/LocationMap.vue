@@ -5,32 +5,31 @@
 </template>
 
 <script>
-export default {
-  name: 'LocationMap'
-}
+  export default {
+    name: 'LocationMap'
+  }
 </script>
 
 <style>
-.map-container {
-  width: 50%; /* Fixed width for map */
-  height: 80vh;
-  overflow: hidden; /* Prevent scroll in map section */
-  position: sticky; /* Optional if you want it to scroll with page */
-  top: 0;
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-}
-
-/* Mobile style - map collapsed behind or smaller */
-@media (max-width: 768px) {
   .map-container {
-    width: 100%;
-    height: 180px;
-    margin-bottom: 1rem;
-    display: none;
+    width: 50%;
+    height: 80vh;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
   }
-}
+
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .map-container {
+      width: 100%;
+      height: 180px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+  }
 </style>
